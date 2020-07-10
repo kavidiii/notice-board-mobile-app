@@ -100,13 +100,7 @@ class EditBoardScreen extends Component {
               onChangeText={(text) => this.updateTextInput(text, 'description')}
           />
         </View>
-        {/* <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Author'}
-              value={this.state.author}
-              onChangeText={(text) => this.updateTextInput(text, 'author')}
-          />
-        </View> */}
+        
         <View style={styles.button}>
           <Button
             large

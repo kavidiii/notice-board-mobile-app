@@ -5,7 +5,7 @@ import firestore from '@react-native-firebase/firestore';
 
 class AddBoardScreen extends Component {
   static navigationOptions = {
-    title: 'Add Board',
+    title: 'Add Notice',
   };
   constructor() {
     super();

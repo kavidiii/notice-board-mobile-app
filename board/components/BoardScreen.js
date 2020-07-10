@@ -1,40 +1,17 @@
-// import React, { Component } from 'react';
-// import { Button, View, Text } from 'react-native';
-// import firestore from '@react-native-firebase/firestore';
-// class BoardScreen extends Component {
-//   static navigationOptions = {
-//     title: 'Board List',
-//   };
-//   render() {
-//     return (
-       
-//       firestore().collection('boards')
-//       .get()
-//       .then(snapshot => {
-//         snapshot
-//           .docs
-//           .forEach(doc => {
-//             console.log(JSON.parse(doc._document.data.toString()))
-//           });
-//       })
-//     );
-//     }
-// }
-
-// export default BoardScreen;
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator, View, Text} from 'react-native';
  import { List, ListItem, Button, Icon } from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
+ 
 class BoardScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
+       
       
       headerRight: (
         <Button
-        title= 'Board List'
-          buttonStyle={{ padding: 0, backgroundColor: 'transparent' }}
-          icon={{ name: 'add-circle', style: { marginRight: 0, fontSize: 28 } }}
+        title= 'Add notice'
+          buttonStyle={{ padding: 0,color:'#517fa4'  ,marginLeft: 10, fontSize: 28 }}
           onPress={() => { navigation.push('AddBoard') }}
         />
       ),
@@ -52,6 +29,7 @@ class BoardScreen extends Component {
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
+   
   onCollectionUpdate = (querySnapshot) => {
     const boards = [];
     querySnapshot.forEach((doc) => {
@@ -106,7 +84,8 @@ class BoardScreen extends Component {
               <ListItem
                 key={i}
                 title={item.title}
-                leftIcon={{name: 'book', type: 'font-awesome'}}
+                leftIcon={{  name:'ios-american-football',
+                type:'ionicon'}}
                 onPress={() => {
                   this.props.navigation.navigate('BoardDetails', {
                     boardkey: `${JSON.stringify(item.key)}`,
@@ -115,7 +94,7 @@ class BoardScreen extends Component {
               />
             ))
           }
-        
+         
       </View>
     );
   }
