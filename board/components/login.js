@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator,Image,ImageBackground } from 'react-native';
 
 
 
@@ -48,13 +48,20 @@ export default class Login extends Component {
     if(this.state.isLoading){
       return(
         <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E"/>
+          <ActivityIndicator size="large" color= "#F4A460"/>
         </View>
       )
     }    
     return (
-      <View style={styles.container}>  
+     
+      <View style={styles.container}> 
+        
+        <Image source = {require("./image/kal.jpg")}
+      style = {{position: "absolute",width: '125%', height: '115%' }}
+  > 
+  </Image> 
         <TextInput
+            
           style={styles.inputStyle}
           placeholder="Email"
           value={this.state.email}
@@ -67,6 +74,7 @@ export default class Login extends Component {
           onChangeText={(val) => this.updateInputVal(val, 'password')}
           maxLength={15}
           secureTextEntry={true}
+          
         />   
         <Button
           color="#3740FE"
@@ -78,8 +86,10 @@ export default class Login extends Component {
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signup')}>
           Don't have account? Click here to signup
-        </Text>                          
+        </Text>
+                                
       </View>
+      
     );
   }
 }
@@ -94,16 +104,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   inputStyle: {
+     
     width: '100%',
     marginBottom: 15,
     paddingBottom: 15,
     alignSelf: "center",
-    borderColor: "#ccc",
-    borderBottomWidth: 1
+    borderColor: '#F44336',
+    borderBottomWidth: 1,
+    fontWeight: "bold",
+    marginLeft:30,
+    color: 'black',
+    fontSize:18
+    
   },
   loginText: {
-    color: '#3740FE',
-    marginTop: 25,
+    fontWeight: "bold",marginLeft:30,color: 'red',fontSize:18,
     textAlign: 'center'
   },
   preloader: {
@@ -114,6 +129,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    color: '#9C27B0', 
   }
 });

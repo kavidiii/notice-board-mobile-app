@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View } from 'react-native';
- import { List, ListItem, Text, Card, Button } from 'react-native-elements';
+import { StyleSheet, ScrollView, ActivityIndicator, View ,Image} from 'react-native';
+ import { List, ListItem, Text, Card, Button,icon } from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
-
+import auth from '@react-native-firebase/auth';
 class BoardDetailScreen extends Component {
   static navigationOptions = {
     title: 'Board Details',
@@ -58,6 +58,10 @@ class BoardDetailScreen extends Component {
     }
     return (
       <View>
+        <Image source = {require("./image/g.jpg")}
+      style = {{position: "absolute",width: '100%', height: '300%' }}
+  > 
+  </Image> 
         <Card style={styles.container}>
           <View style={styles.subContainer}style={{padding: 20}}>
             <View>
@@ -70,6 +74,8 @@ class BoardDetailScreen extends Component {
               <Text h4>{this.state.board.author}</Text>
             </View>
           </View>
+          {
+             this.state.board.author == auth().currentUser.displayName ?
           <View style={styles.detailButton}>
             <Button
               large
@@ -82,6 +88,10 @@ class BoardDetailScreen extends Component {
                 });
               }} />
           </View>
+          :<View></View>
+        } 
+         {
+            this.state.board.author == auth().currentUser.displayName ?
           <View style={styles.detailButton}>
             <Button
               large
@@ -91,6 +101,8 @@ class BoardDetailScreen extends Component {
               title='Delete'
               onPress={() => this.deleteBoard(this.state.key)} />
           </View>
+           :<View></View>
+          } 
         </Card>
       </View>
     );

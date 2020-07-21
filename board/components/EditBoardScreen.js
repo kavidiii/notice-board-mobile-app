@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput,Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
 
@@ -84,8 +84,13 @@ class EditBoardScreen extends Component {
     }
     return (
       <ScrollView style={styles.container}>
+         <Image source = {require("./image/dd.jpg")}
+      style = {{position: "absolute",width: '100%', height: '90%' }}
+  > 
+  </Image> 
         <View style={styles.subContainer}>
           <TextInput
+             style={{marginTop:20,fontWeight: "bold",marginLeft:30,color: 'red',fontSize:18}}
               placeholder={'Title'}
               value={this.state.title}
               onChangeText={(text) => this.updateTextInput(text, 'title')}
@@ -93,6 +98,7 @@ class EditBoardScreen extends Component {
         </View>
         <View style={styles.subContainer}>
           <TextInput
+              style={{marginTop:20,fontWeight: "bold",marginLeft:30,color: '#1C2833 ',fontSize:18}}
               multiline={true}
               numberOfLines={4}
               placeholder={'Description'}

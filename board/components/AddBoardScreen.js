@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput,Button } from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput,Button,Image } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
@@ -55,30 +55,39 @@ class AddBoardScreen extends Component {
     if(this.state.isLoading){
       return(
         <View style={styles.activity}>
-          <ActivityIndicator size="large" color="#0000ff"/>
+          <ActivityIndicator size="large" color='green' />
         </View>
       )
     }
     return (
       <ScrollView style={styles.container}>
+          <Image source = {require("./image/tt.jpg")}
+      style = {{position: "absolute",width: '100%', height: '90%' }}
+  > 
+  </Image> 
         <View style={styles.subContainer}>
+
           <TextInput
               placeholder={'Title'}
               value={this.state.title}
               onChangeText={(text) => this.updateTextInput(text, 'title')}
+              style={{marginTop:20,fontWeight: "bold",marginLeft:30,color: 'black',fontSize:18}}
           />
         </View>
         <View style={styles.subContainer}>
           <TextInput
+             style={{marginTop:20,fontWeight: "bold",marginLeft:30,color: 'black',fontSize:18}}
               multiline={true}
               numberOfLines={4}
               placeholder={'Description'}
               value={this.state.description}
               onChangeText={(text) => this.updateTextInput(text, 'description')}
+              
           />
         </View>
         <View style={styles.subContainer}>
           <TextInput
+              style={{marginTop:20,fontWeight: "bold",marginLeft:30,color: 'green',fontSize:18}}
               placeholder={'Author'}
               value={this.state.author}
               onChangeText={(text) => this.updateTextInput(text, 'author')}
@@ -107,6 +116,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderBottomWidth: 2,
     borderBottomColor: '#CCCCCC',
+    
   },
   activity: {
     position: 'absolute',

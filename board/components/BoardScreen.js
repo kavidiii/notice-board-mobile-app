@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, ActivityIndicator, View, Text} from 'react-native';
+import { StyleSheet, ScrollView, ActivityIndicator, View, Text,Image} from 'react-native';
  import { List, ListItem, Button, Icon } from 'react-native-elements';
 import firestore from '@react-native-firebase/firestore';
  
@@ -78,7 +78,10 @@ class BoardScreen extends Component {
         
       // </View>
       <View style={styles.container}>
-        
+          <Image source = {require("./image/is.jpg")}
+      style = {{position: "absolute",width: '100%', height: '110%' }}
+  > 
+  </Image> 
           {
             this.state.boards.map((item, i) => (
               <ListItem

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator ,Image} from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 
@@ -57,6 +57,10 @@ export default class Signup extends Component {
     }    
     return (
       <View style={styles.container}>  
+        <Image source = {require("./image/k.jpg")}
+      style = {{position: "absolute",width: '120%', height: '120%' }}
+  > 
+  </Image> 
         <TextInput
           style={styles.inputStyle}
           placeholder="Name"
@@ -108,10 +112,11 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     alignSelf: "center",
     borderColor: "#ccc",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    fontWeight: "bold",marginLeft:30,color: 'green',fontSize:18
   },
   loginText: {
-    color: '#3740FE',
+    fontWeight: "bold",marginLeft:30,color: 'red',fontSize:18,
     marginTop: 25,
     textAlign: 'center'
   },
